@@ -303,7 +303,7 @@ def _extract_tokens(lemmas, scores, ratio, words):
     """
     lemmas.sort(key=lambda s: scores[s], reverse=True)
     length = len(lemmas) * ratio if words is None else words
-    return [(scores[lemmas[i]], lemmas[i],) for i in range(int(length))]
+    return [(scores[lemmas[i]], lemmas[i],) for i in range(min(int(length), words))]
 
 
 def _lemmas_to_words(tokens):
